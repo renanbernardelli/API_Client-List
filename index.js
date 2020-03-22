@@ -44,8 +44,12 @@ function execSQLQuery(sqlQry, res) {
     });
 };
 
-//criar rota /clients
-router.get('/clients', (req, res) => {
+//criar rota /clients com possibilidade de buscar por id
+router.get('/clients/:id?', (req, res) => {
 
-    execSQLQuery('SELECT * FROM Client_List', res);
+    let filter = '';
+    if (req.params.id) {
+        filter = ' WHERE ID=' + parseInt(req.params.id);
+    };
+    execSQLQuery('SELECT * FROM Client_List' + filter, res);
 })

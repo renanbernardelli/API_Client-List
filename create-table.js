@@ -7,7 +7,6 @@ const connection = mysql.createConnection({
     user: 'XXX',
     password: 'XXX',
     database: 'XXX'
-
 });
 
 //usando o objeto connection para fazer uma conexão
