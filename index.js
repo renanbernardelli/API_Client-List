@@ -72,4 +72,13 @@ router.post('/clients', (req, res) => {
     const nome = req.body.nome.substring(0, 150);
     const cpf = req.body.cpf.substring(0, 11);
     execSQLQuery(`INSERT INTO Client_List(NOME, CPF) VALUES('${nome}', '${cpf}')`, res);
-})
+});
+
+//Atualizar cliente com "PATCH" para não alterar o ID
+router.patch('/clients/:id', (req, res) => {
+
+    const  id = parseInt(req.params.id);
+    const nome = req.body.nome.substring(0, 150);
+    const cpf = req.body.cpf.substring(0, 11);
+    execSQLQuery(`UPDATE Client_List SET Nome='${nome}', CPF='${cpf}' WHERE ID=${id}`, res);
+});
